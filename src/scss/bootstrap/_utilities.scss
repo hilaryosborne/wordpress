@@ -1,0 +1,55 @@
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $color, $background in $backgrounds {
+      .bg#{$infix}-#{$color}  { background:$background !important; }
+    }
+    .bg#{$infix}-none  { background:none !important; }
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $size, $height in $sizes-vertical {
+      .vh#{$infix}-#{$size}  { height:$height !important; }
+    }
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $size, $lengths in $spacers {
+      $length-x: map-get($lengths, x);
+      $length-y: map-get($lengths, y);
+      .yt#{$infix}-#{$size}  { top: $length-y !important; }
+      .yb#{$infix}-#{$size} { bottom: $length-y !important; }
+      .xl#{$infix}-#{$size} { left: $length-x !important; }
+      .xr#{$infix}-#{$size} { right: $length-x !important; }
+      .y#{$infix}-#{$size} {
+        top: $length-y !important;
+        bottom:  $length-y !important;
+      }
+      .x#{$infix}-#{$size} {
+        left:$length-x !important;
+        right:$length-x !important;
+      }
+    }
+    .pos#{$infix}-fixed { position: fixed !important; }
+    .pos#{$infix}-relative { position: relative !important; }
+    .pos#{$infix}-absolute { position: absolute !important; }
+    .yt#{$infix}-auto { top: auto !important; }
+    .yb#{$infix}-auto { bottom: auto !important; }
+    .xl#{$infix}-auto { left: auto !important; }
+    .xr#{$infix}-auto { right: auto !important; }
+    .y#{$infix}-auto {
+      top: auto !important;
+      bottom:  auto !important;
+    }
+    .x#{$infix}-auto {
+      left: auto !important;
+      right:  auto !important;
+    }
+  }
+}

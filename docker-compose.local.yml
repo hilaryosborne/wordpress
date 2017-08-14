@@ -1,0 +1,38 @@
+version: '2'
+services:
+  web:
+    image: web
+    build:
+      context: .
+      dockerfile: ./.docker/local/apache/Dockerfile
+    environment:
+      - DB_NAME=wordpress
+      - DB_USER=wordpress
+      - DB_PASSWORD=secret
+      - DB_HOST=database
+      - DB_PREFIX=wp_
+      - WP_HOME=http://localhost
+      - WP_DEBUG=1
+      - WP_SITEURL=http://localhost
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./.docker/local/apache/sites-available:/etc/apache2/sites-available
+      - ./plugins:/var/www/html/public/wp-content/mu-plugins
+      - ./theme:/var/www/html/public/wp-content/themes/boilerplate
+      - ./storage/plugins:/var/www/html/public/wp-content/plugins
+      - ./storage/cache:/var/www/html/public/wp-content/cache
+      - ./storage/uploads:/var/www/html/public/wp-content/uploads
+  database:
+    image: mysql
+    environment:
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=wordpress
+    volumes:
+      - ./.docker/local/mysql/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
