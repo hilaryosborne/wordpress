@@ -3,12 +3,33 @@
 function boilerplate_setup() {
   // Hide the admin bar
 	show_admin_bar(false);
-  // Register the required menus
-	register_nav_menus(
-		['main' => 'Main Menu']
-	);
+	// Load the JSON configurations
+	boilerplate_register_menus();
+	boilerplate_register_sizes();
+	boilerplate_register_taxonomy();
+	boilerplate_register_types();
+  // // Register the required menus
+	// register_nav_menus(
+	// 	['main' => 'Main Menu']
+	// );
   // Add custom image sizes
 	// add_image_size( 'xlarge', 1800, 1200, false );
+}
+
+function boilerplate_register_types() {
+
+}
+
+function boilerplate_register_menus() {
+
+}
+
+function boilerplate_register_sizes() {
+
+}
+
+function boilerplate_register_taxonomy() {
+
 }
 
 add_action('init', 'boilerplate_setup');
