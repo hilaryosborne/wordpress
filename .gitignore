@@ -2,6 +2,7 @@
 /vendor
 /public/*
 !/public/.gitkeep
+!/public/.htaccess
 .DS_Store
 /node_modules
 access.log

@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.resolve(`theme/dist/`),
     filename: 'js/app.[chunkhash].js',
-    publicPath: `wp-content/themes/${theme}/dist/`,
+    publicPath: `/wp-content/themes/${theme}/dist/`,
   },
   resolve: {
     extensions: ['.js', '.jsx']
