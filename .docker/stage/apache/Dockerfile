@@ -72,12 +72,12 @@ RUN composer install --no-ansi --no-autoloader --no-dev --no-interaction
 
 RUN composer dump-autoload --optimize
 
-COPY ./plugins /var/www/html/public/wp-content/mu-plugins
-COPY ./theme /var/www/html/public/wp-content/themes/boilerplate
+RUN mv -f /var/www/html/plugins /var/www/html/public/wp-content/mu-plugins \
+  && mv -f /var/www/html/theme /var/www/html/public/wp-content/themes/boilerplate
 
-COPY ./storage/plugins /var/www/html/public/wp-content/plugins
-COPY ./storage/cache /var/www/html/public/wp-content/cache
-COPY ./storage/uploads /var/www/html/public/wp-content/uploads
+RUN mv -f /var/www/html/storage/plugins /var/www/html/public/wp-content/plugins \
+  && mv -f /var/www/html/storage/cache /var/www/html/public/wp-content/cache \
+  && mv -f /var/www/html/storage/uploads /var/www/html/public/wp-content/uploads
 
 RUN yarn build:dist && rm -rf /var/www/html/node_modules && rm -rf ~/.npm
 RUN chgrp -R www-data /var/www/html && chmod -R ug+rwx /var/www/html
