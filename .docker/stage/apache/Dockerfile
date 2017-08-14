@@ -63,12 +63,12 @@ ENV ACF_PRO_KEY b3JkZXJfaWQ9NDY1MjN8dHlwZT1wZXJzb25hbHxkYXRlPTIwMTQtMTItMTggMDA6
 # Setup app
 WORKDIR /var/www/html
 
+COPY . /var/www/html
+
 COPY package.json /var/www/html/
 RUN yarn install
 COPY composer.json /var/www/html/
 RUN composer install --no-ansi --no-autoloader --no-dev --no-interaction
-
-COPY . /var/www/html
 
 RUN composer dump-autoload --optimize
 

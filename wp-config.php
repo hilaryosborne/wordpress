@@ -85,7 +85,7 @@ define('NONCE_SALT',       '@|G]H)xD{AFu2rOI4@mQI)mrEWU/uQ(H*z8R]lx#Q.aF$SWwS8%9
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = getenv('DB_PREFIX');
+$table_prefix  = getenv('WP_PREFIX');
 
 /**
  * For developers: WordPress debugging mode.
@@ -111,6 +111,6 @@ if ( !defined('ABSPATH') )
 require_once(ABSPATH . 'wp-settings.php');
 
 // HTTPS setup
-if (!isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
     $_SERVER['HTTPS']='on';
 }
