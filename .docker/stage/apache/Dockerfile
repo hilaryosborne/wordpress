@@ -79,6 +79,8 @@ RUN mv -f /var/www/html/storage/plugins /var/www/html/public/wp-content/plugins 
   && mv -f /var/www/html/storage/cache /var/www/html/public/wp-content/cache \
   && mv -f /var/www/html/storage/uploads /var/www/html/public/wp-content/uploads
 
+COPY ./.docker/local/apache/public/.htaccess /var/www/html/public/.htaccess
+
 RUN yarn build:dist && rm -rf /var/www/html/node_modules && rm -rf ~/.npm
 RUN chgrp -R www-data /var/www/html && chmod -R ug+rwx /var/www/html
 

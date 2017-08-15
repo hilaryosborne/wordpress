@@ -6,6 +6,8 @@ LABEL maintainer "Hilary Osborne <h.t.osborne@gmail.com>"
 ENV TZ "Australia/Brisbane"
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
+COPY ./.docker/local/apache/public/.htaccess /var/www/html/public/.htaccess
+
 COPY ./.docker/local/apache/certs/ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
 COPY ./.docker/local/apache/certs/ssl-cert-snakeoil.key /etc/ssl/private/ssl-cert-snakeoil.key
 
