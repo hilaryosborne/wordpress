@@ -1,1 +1,3 @@
-/.docker
+public
+node_modules
+vendor

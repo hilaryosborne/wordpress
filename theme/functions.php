@@ -42,11 +42,11 @@ function boilerplate_webpack_setup() {
 	$j_manifest = json_decode(file_get_contents(dirname(__FILE__) . '/dist/manifest.json'),true);
 
 	if (isset($j_manifest['main']['css'])) {
-		wp_enqueue_style('webpackcss', home_url().$j_manifest['main']['css']);
+		wp_enqueue_style('webpackcss', get_template_directory_uri().'/dist/'.$j_manifest['main']['css']);
 	}
 
 	if (isset($j_manifest['main']['js'])) {
-		wp_enqueue_script('webpackjs', home_url().$j_manifest['main']['js'], [], false, true);
+		wp_enqueue_script('webpackjs', get_template_directory_uri().'/dist/'.$j_manifest['main']['js'], [], false, true);
 	}
 }
 

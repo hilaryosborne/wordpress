@@ -19,6 +19,9 @@ services:
       - "443:443"
     volumes:
       - .:/var/www/html
+      - ./vendor:/var/www/html/vendor
+      - ./public:/var/www/html/public
+      - ./.docker/local/apache/public/.htaccess:/var/www/html/public/.htaccess
       - ./.docker/local/apache/sites-available:/etc/apache2/sites-available
       - ./plugins:/var/www/html/public/wp-content/mu-plugins
       - ./theme:/var/www/html/public/wp-content/themes/boilerplate

@@ -7,14 +7,13 @@ ENV TZ "Australia/Brisbane"
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 COPY ./.docker/stage/apache/php/php.ini /usr/stage/etc/php/
-
 COPY ./.docker/stage/apache/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY ./.docker/stage/apache/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 COPY ./.docker/stage/apache/certs/ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
 COPY ./.docker/stage/apache/certs/ssl-cert-snakeoil.key /etc/ssl/private/ssl-cert-snakeoil.key
 
 RUN apt-get update && apt-get install -y \
-    git zip \
+    nano git zip \
     nfs-common \
     net-tools \
     libssl-dev \
@@ -65,24 +64,33 @@ WORKDIR /var/www/html
 
 COPY . /var/www/html
 
-COPY package.json /var/www/html/
-RUN yarn install
-COPY composer.json /var/www/html/
-RUN composer install --no-ansi --no-autoloader --no-dev --no-interaction
+RUN mkdir /var/www/html/public
 
-RUN composer dump-autoload --optimize
+RUN composer install --no-ansi --no-autoloader --no-dev --no-interaction \
+  && composer dump-autoload --optimize
+
+RUN rm -rf /var/www/html/public/wp-content/plugins \
+  && rm -rf /var/www/html/public/wp-content/cache \
+  && rm -rf /var/www/html/public/wp-content/uploads
+
+RUN yarn install \
+  && yarn build:dist \
+  && rm -rf /var/www/html/node_modules \
+  && rm -rf ~/.npm
 
 RUN mv -f /var/www/html/plugins /var/www/html/public/wp-content/mu-plugins \
-  && mv -f /var/www/html/theme /var/www/html/public/wp-content/themes/boilerplate
+  && mv -f /var/www/html/theme/ /var/www/html/public/wp-content/themes/boilerplate
 
+# REMOVE IF MOUNTING EXTERNAL RESOURCES
 RUN mv -f /var/www/html/storage/plugins /var/www/html/public/wp-content/plugins \
   && mv -f /var/www/html/storage/cache /var/www/html/public/wp-content/cache \
   && mv -f /var/www/html/storage/uploads /var/www/html/public/wp-content/uploads
+# END IF REMOVE IF EXTERNAL RESOURCES
 
-COPY ./.docker/local/apache/public/.htaccess /var/www/html/public/.htaccess
+COPY ./.docker/stage/apache/public/.htaccess /var/www/html/public/.htaccess
 
-RUN yarn build:dist && rm -rf /var/www/html/node_modules && rm -rf ~/.npm
-RUN chgrp -R www-data /var/www/html && chmod -R ug+rwx /var/www/html
+RUN chgrp -R www-data /var/www/html \
+  && chmod -R ug+rwx /var/www/html
 
 # Versioning
 ARG version=development
