@@ -1,11 +1,13 @@
 [
   {
-    "code":"",
-    "labels":{
-      "name":"",
-      "singular_name":""
-    },
-    "public":true,
-    "has_archive":false
+    "code":"example",
+    "args":{
+      "labels":{
+        "name":"Examples",
+        "singular_name":"Example"
+      },
+      "public":true,
+      "has_archive":false
+    }
   }
 ]

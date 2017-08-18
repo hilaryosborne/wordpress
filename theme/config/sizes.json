@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "code":"xlarge",
+    "width":1200,
+    "height":600,
+    "crop":true
+  }
+]
