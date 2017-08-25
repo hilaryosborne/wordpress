@@ -11,6 +11,7 @@ access.log
 error.log
 .env
 /theme/dist
+composer.lock
 
 /plugins/*
 !/plugins/load.php
