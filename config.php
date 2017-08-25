@@ -5,36 +5,13 @@
 /*----------------------------------------------------*/
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 /*----------------------------------------------------*/
-// Composer autoload
-/*----------------------------------------------------*/
-if (!is_dir(__DIR__.DS.'vendor')) {
-	throw new \Exception('No vendor folder found, please run composer');
+
+$env = parse_ini_file(__DIR__.'/.env', TRUE);
+
+foreach ($env as $k => $value) {
+	if (getenv($k)) { continue; }
+	putenv("$k=$value");
 }
-
-if (file_exists($autoload = __DIR__.DS.'vendor'.DS.'autoload.php')) {
-	require_once $autoload;
-} else {
-	throw new \Exception('No autoloader found, please re-run composer');
-}
-
-$file = '.env';
-
-$env = new \Dotenv\Dotenv($rootPath, $file);
-
-try {
-	$env->load();
-} catch (Exception $e) {}
-
-$env->required([
-	'DB_NAME',
-	'DB_USER',
-	'DB_PASSWORD',
-	'DB_HOST',
-	'WP_PREFIX',
-	'WP_HOME',
-	'WP_SITEURL'
-]);
-
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */

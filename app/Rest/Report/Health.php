@@ -2,7 +2,7 @@
 
 namespace App\Rest\Report;
 
-static class Health {
+class Health {
 
   public static function init() {
     add_action('rest_api_init', 'Health::register');

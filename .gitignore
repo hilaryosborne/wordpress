@@ -3,6 +3,8 @@
 /public/*
 !/public/.gitkeep
 !/public/.htaccess
+/bootstrap/app
+/bootstrap/vendor
 .DS_Store
 /node_modules
 access.log

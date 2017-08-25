@@ -1,6 +1,6 @@
 <?php
 
-use App\Theme\{Size,Menu,Option,Taxonomy,Types};
+use App\Theme\{Webpack,Size,Menu,Option,Taxonomy,Types};
 use App\Rest\Report\{Health,Version};
 
 function boilerplate_setup() {

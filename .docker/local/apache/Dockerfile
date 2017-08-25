@@ -55,7 +55,7 @@ RUN set -ex \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
   && rm yarn-v$YARN_VERSION.tar.gz
 
-ENV ACF_PRO_KEY b3JkZXJfaWQ9NDY1MjN8dHlwZT1wZXJzb25hbHxkYXRlPTIwMTQtMTItMTggMDA6NDU6MTg=
+ENV ACF_PRO_KEY <ACF_PRO_KEY>
 
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data

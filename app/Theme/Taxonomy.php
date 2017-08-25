@@ -2,10 +2,10 @@
 
 namespace App\Theme;
 
-static class Taxonomy {
+class Taxonomy {
 
   public static function config() {
-    $pathname = dirname(__FILE__) . '/config/taxonomy.json';
+    $pathname = get_template_directory() . '/config/taxonomy.json';
     return is_file($pathname) ? json_decode(file_get_contents($pathname), true) : [] ;
   }
 

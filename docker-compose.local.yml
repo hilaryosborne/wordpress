@@ -1,6 +1,6 @@
 version: '2'
 services:
-  web:
+  wp.web:
     image: wpdockerlocal/web
     build:
       context: .
@@ -9,7 +9,7 @@ services:
       - DB_NAME=wordpress
       - DB_USER=wordpress
       - DB_PASSWORD=secret
-      - DB_HOST=database
+      - DB_HOST=wp.database
       - WP_PREFIX=wp_
       - WP_HOME=http://localhost
       - WP_DEBUG=1
@@ -19,7 +19,6 @@ services:
       - "443:443"
     volumes:
       - .:/var/www/html
-      - ./vendor:/var/www/html/vendor
       - ./public:/var/www/html/public
       - ./.docker/local/apache/public/.htaccess:/var/www/html/public/.htaccess
       - ./.docker/local/apache/sites-available:/etc/apache2/sites-available
@@ -28,7 +27,12 @@ services:
       - ./storage/plugins:/var/www/html/public/wp-content/plugins
       - ./storage/cache:/var/www/html/public/wp-content/cache
       - ./storage/uploads:/var/www/html/public/wp-content/uploads
-  database:
+      - ./bootstrap:/var/www/html/public/wp-content/mu-plugins/bootstrap
+      - ./vendor:/var/www/html/public/wp-content/mu-plugins/bootstrap/vendor
+      - ./app:/var/www/html/public/wp-content/mu-plugins/bootstrap/app
+      - ./config.php:/var/www/html/public/wp-config.php
+      - ./.env:/var/www/html/public/.env
+  wp.database:
     image: mysql
     environment:
       - MYSQL_USER=wordpress

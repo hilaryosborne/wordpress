@@ -2,23 +2,23 @@
 
 namespace App\Theme;
 
-static class Options {
+class Option {
 
   public static function config() {
-    $pathname = dirname(__FILE__) . '/config/options.json';
+    $pathname = get_template_directory() . '/config/options.json';
     return is_file($pathname) ? json_decode(file_get_contents($pathname), true) : [] ;
   }
 
   public static function init() {
-    $config = Options::config();
+    $config = Option::config();
     foreach ($config as $k => $option) {
       $built = acf_add_options_page([
         'page_title' => $option['title'],
         'menu_slug' => $option['slug'],
         'redirect' => false
       ]);
-      if ($built['children'] && is_array($built['children'])) {
-  			Options::submenu($built['children'], $built);
+      if (isset($option['children']) && is_array($option['children'])) {
+  			Option::submenu($option['children'], $built);
   		}
     }
   }
@@ -30,8 +30,8 @@ static class Options {
         'menu_slug' => $parent['menu_slug'].$option['slug'],
         'parent_slug' => $parent['menu_slug']
       ]);
-      if ($built['children'] && is_array($built['children'])) {
-  			Options::submenu($built['children'], $built);
+      if (isset($option['children']) && is_array($option['children'])) {
+  			Option::submenu($option['children'], $built);
   		}
   	}
   }

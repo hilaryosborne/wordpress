@@ -2,10 +2,10 @@
 
 namespace App\Theme;
 
-static class Size {
+class Size {
 
   public static function config() {
-    $pathname = dirname(__FILE__) . '/config/size.json';
+    $pathname = get_template_directory() . '/config/size.json';
     return is_file($pathname) ? json_decode(file_get_contents($pathname), true) : [] ;
   }
 

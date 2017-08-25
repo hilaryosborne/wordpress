@@ -7,6 +7,11 @@
   {
     "title":"Shared",
     "slug":"theme-shared",
-    "children":[]
+    "children":[
+      {
+        "title":"Contact",
+        "slug":"-contact"
+      }
+    ]
   }
 ]
