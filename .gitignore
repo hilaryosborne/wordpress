@@ -9,7 +9,6 @@
 /node_modules
 access.log
 error.log
-.env
 /theme/dist
 composer.lock
 

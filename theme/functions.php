@@ -2,7 +2,7 @@
 
 use App\Theme\{Webpack,Size,Menu,Option,Taxonomy,Types};
 use App\Rest\Report\{Health,Version};
-use App\Session\{Flashbag}
+use App\Session\{Flashbag};
 
 function boilerplate_setup() {
   // Hide the admin bar
