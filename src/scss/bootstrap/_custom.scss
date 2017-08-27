@@ -1,18 +1,65 @@
-$grid-gutter-width-base:1rem;
 
-$lead-font-size:1.1rem;
+$white:  #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:  #000;
 
-$font-size-h1: 3rem;
-$font-size-h2: 2rem;
-$font-size-h3: 1.4rem;
-$font-size-h4: 1.1rem;
-$font-size-h5: 1.05rem;
-$font-size-h6: 1rem;
+$grays: (
+  100: $gray-100,
+  200: $gray-200,
+  300: $gray-300,
+  400: $gray-400,
+  500: $gray-500,
+  600: $gray-600,
+  700: $gray-700,
+  800: $gray-800,
+  900: $gray-900
+);
 
-$display1-weight:900;
-$display2-weight:700;
-$display3-weight:700;
-$display4-weight:700;
+$blue:    #007bff;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #e83e8c;
+$red:     #f15b5a;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #28a745;
+$teal:    #20c997;
+$cyan:    #17a2b8;
+
+$colors: (
+  blue: $blue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  gray: $gray-600,
+  gray-dark: $gray-800
+);
+
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800
+);
 
 $sizes: (
   25: 25%,
@@ -35,33 +82,34 @@ $backgrounds:(
   bk: #000000
 );
 
+$lead-font-size:   1.5rem !default;
+$lead-font-weight: 300 !default;
+
 $spacer: 1rem;
-$spacer-x: $spacer;
-$spacer-y: $spacer;
 $spacers: (
-  0:(x:0,y:0),
-  1:(x:($spacer-x * .5),y:($spacer-y * .5)),
-  2:(x:($spacer-x * 1),y:($spacer-y * 1)),
-  3:(x:($spacer-x * 1.5),y:($spacer-y * 1.5)),
-  4:(x:($spacer-x * 2),y:($spacer-y * 2)),
-  5:(x:($spacer-x * 2.5),y:($spacer-y * 2.5)),
-  6:(x:($spacer-x * 3),y:($spacer-y * 3)),
-  7:(x:($spacer-x * 3.5),y:($spacer-y * 3.5)),
-  8:(x:($spacer-x * 4),y:($spacer-y * 4)),
-  9:(x:($spacer-x * 4.5),y:($spacer-y * 4.5)),
-  10:(x:($spacer-x * 5),y:($spacer-y * 5)),
-  11:(x:($spacer-x * 5.5),y:($spacer-y * 5.5)),
-  12:(x:($spacer-x * 6),y:($spacer-y * 6)),
-  13:(x:($spacer-x * 6.5),y:($spacer-y * 6.5)),
-  14:(x:($spacer-x * 7),y:($spacer-y * 7)),
-  15:(x:($spacer-x * 7.5),y:($spacer-y * 7.5)),
-  16:(x:($spacer-x * 8),y:($spacer-y * 8)),
-  17:(x:($spacer-x * 8.5),y:($spacer-y * 8.5)),
-  18:(x:($spacer-x * 9),y:($spacer-y * 9)),
-  19:(x:($spacer-x * 9.5),y:($spacer-y * 9.5)),
-  20:(x:($spacer-x * 10),y:($spacer-y * 10)),
-  21:(x:($spacer-x * 10.5),y:($spacer-y * 10.5)),
-  22:(x:($spacer-x * 11),y:($spacer-y * 11)),
-  23:(x:($spacer-x * 11.5),y:($spacer-y * 11.5)),
-  24:(x:($spacer-x * 12),y:($spacer-y * 12))
+  0: 0,
+  1: ($spacer * .5),
+  2: ($spacer * 1),
+  3: ($spacer * 1.5),
+  4: ($spacer * 2),
+  5: ($spacer * 2.5),
+  6: ($spacer * 3),
+  7: ($spacer * 3.5),
+  8: ($spacer * 4),
+  9: ($spacer * 4.5),
+  10: ($spacer * 5),
+  11: ($spacer * 5.5),
+  12: ($spacer * 6),
+  13: ($spacer * 6.5),
+  14: ($spacer * 7),
+  15: ($spacer * 7.5),
+  16: ($spacer * 8),
+  17: ($spacer * 8.5),
+  18: ($spacer * 9),
+  19: ($spacer * 9.5),
+  20: ($spacer * 10),
+  21: ($spacer * 10.5),
+  22: ($spacer * 11),
+  23: ($spacer * 11.5),
+  24: ($spacer * 12)
 );

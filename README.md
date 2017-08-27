@@ -1,4 +1,4 @@
-# WordPress Webpack + SCSS + Composer + Docker
+# WordPress Webpack + SCSS + BootStrap 4 + Composer + Docker
 
 This project aims to provide a simple to deploy WordPress boilerplate with inbuilt composer and docker support.
 
@@ -23,3 +23,15 @@ To better work with AWS and Google persistent storage all uploads can be found w
 ## Mounting persistent storage
 
 Mount your persistent volumes individually to /public/wp-content/plugins, /public/wp-content/uploads etc
+
+## Adding ACF Key
+
+TODO
+
+## Customizing BootStrap
+
+TODO
+
+## Adding fonts
+
+TODO
