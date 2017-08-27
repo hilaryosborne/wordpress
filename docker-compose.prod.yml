@@ -13,7 +13,11 @@ services:
       - DB_PREFIX=wp_
       - WP_HOME=http://something.prod.example.com
       - WP_DEBUG=1
-      - WP_SITEURL=http://something.prod.example.com/cms
+      - WP_SITEURL=http://something.prod.example.com
+    volumes:
+      - ./storage/plugins:/var/www/html/public/wp-content/plugins
+      - ./storage/cache:/var/www/html/public/wp-content/cache
+      - ./storage/uploads:/var/www/html/public/wp-content/uploads
     ports:
       - "80"
       - "443"

@@ -82,8 +82,8 @@ RUN mv -f /var/www/html/plugins /var/www/html/public/wp-content/mu-plugins \
   && mv -f /var/www/html/theme/ /var/www/html/public/wp-content/themes/boilerplate
 
 RUN mv -f /var/www/html/bootstrap /var/www/html/public/wp-content/mu-plugins/bootstrap \
-  && mv -f /var/www/html/vendor:/var/www/html/public/wp-content/mu-plugins/bootstrap/vendor \
-  && mv -f /var/www/html/app:/var/www/html/public/wp-content/mu-plugins/bootstrap/app
+  && mv -f /var/www/html/vendor /var/www/html/public/wp-content/mu-plugins/bootstrap/vendor \
+  && mv -f /var/www/html/app /var/www/html/public/wp-content/mu-plugins/bootstrap/app
 
 # REMOVE IF MOUNTING EXTERNAL RESOURCES
 RUN mv -f /var/www/html/storage/plugins /var/www/html/public/wp-content/plugins \
@@ -92,7 +92,7 @@ RUN mv -f /var/www/html/storage/plugins /var/www/html/public/wp-content/plugins 
 # END IF REMOVE IF EXTERNAL RESOURCES
 
 COPY ./.env /var/www/html/public/.env
-COPY ./config.php:/var/www/html/public/wp-config.php
+COPY ./config.php /var/www/html/public/wp-config.php
 COPY ./.docker/stage/apache/public/.htaccess /var/www/html/public/.htaccess
 
 RUN chgrp -R www-data /var/www/html \
