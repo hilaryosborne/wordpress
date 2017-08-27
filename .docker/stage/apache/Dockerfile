@@ -86,9 +86,9 @@ RUN mv -f /var/www/html/bootstrap /var/www/html/public/wp-content/mu-plugins/boo
   && mv -f /var/www/html/app /var/www/html/public/wp-content/mu-plugins/bootstrap/app
 
 # REMOVE IF MOUNTING EXTERNAL RESOURCES
-RUN mv -f /var/www/html/storage/plugins /var/www/html/public/wp-content/plugins \
-  && mv -f /var/www/html/storage/cache /var/www/html/public/wp-content/cache \
-  && mv -f /var/www/html/storage/uploads /var/www/html/public/wp-content/uploads
+# RUN mv -f /var/www/html/storage/plugins /var/www/html/public/wp-content/plugins \
+#  && mv -f /var/www/html/storage/cache /var/www/html/public/wp-content/cache \
+#  && mv -f /var/www/html/storage/uploads /var/www/html/public/wp-content/uploads
 # END IF REMOVE IF EXTERNAL RESOURCES
 
 COPY ./.env /var/www/html/public/.env

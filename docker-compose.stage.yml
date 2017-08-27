@@ -10,7 +10,7 @@ services:
       - DB_USER=
       - DB_PASSWORD=
       - DB_HOST=
-      - DB_PREFIX=wp_
+      - WP_PREFIX=wp_
       - WP_HOME=http://something.stage.example.com
       - WP_DEBUG=1
       - WP_SITEURL=http://something.stage.example.com
