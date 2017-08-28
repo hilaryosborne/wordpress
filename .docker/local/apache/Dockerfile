@@ -1,4 +1,24 @@
-FROM php:7-apache
+# --------------------
+#  - SSL Generation -
+
+FROM alpine as ssl
+RUN apk --update add bash openssl
+
+WORKDIR /certs
+COPY ./.docker/local/apache/bin/generate-certs.sh /usr/local/bin/generate-certs.sh
+
+ENV SSL_CERT "ssl-cert-snakeoil.pem"
+ENV SSL_KEY "ssl-cert-snakeoil.key"
+
+CMD /usr/local/bin/generate-certs.sh
+
+# --------------------
+#  - NPM Dependencies -
+
+
+# --------------------
+#  - Apache Service -
+FROM php:7-apache AS apache
 
 LABEL maintainer "Hilary Osborne <h.t.osborne@gmail.com>"
 
@@ -6,9 +26,9 @@ LABEL maintainer "Hilary Osborne <h.t.osborne@gmail.com>"
 ENV TZ "Australia/Brisbane"
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
+COPY --from=ssl /certs /etc/ssl/certs/
 COPY ./.docker/local/apache/php/php.ini /usr/local/etc/php/
-COPY ./.docker/local/apache/certs/ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
-COPY ./.docker/local/apache/certs/ssl-cert-snakeoil.key /etc/ssl/private/ssl-cert-snakeoil.key
+
 
 RUN apt-get update && apt-get install -y \
     nano git zip \
@@ -25,8 +45,8 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) mysqli pdo_mysql
 
 RUN a2enmod rewrite \
-  && a2enmod ssl \
-  && a2ensite default-ssl \
+  #&& a2enmod ssl \
+  #&& a2ensite default-ssl \
   && service apache2 restart
 
 # Install composer
