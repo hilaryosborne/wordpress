@@ -35,3 +35,16 @@ TODO
 ## Adding fonts
 
 TODO
+
+## Private networks
+
+Add the following to the container instance
+
+networks:
+  - docker-net
+
+Add the following to the docker-compose
+
+networks:
+  docker-net:
+    external: true

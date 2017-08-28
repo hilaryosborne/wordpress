@@ -1,6 +1,6 @@
 version: '2'
 services:
-  web:
+  wp.apache:
     image: wpdockerstage/web
     build:
       context: .
@@ -21,8 +21,3 @@ services:
     ports:
       - "80"
       - "443"
-    networks:
-      - docker-net
-networks:
-  docker-net:
-    external: true
