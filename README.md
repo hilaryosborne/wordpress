@@ -2,6 +2,17 @@
 
 This project aims to provide a simple to deploy WordPress boilerplate with inbuilt composer and docker support.
 
+## Launching the docker environment
+
+### Local development
+
+For local development use the docker-compose.local
+
+
+
+For staging use the docker-compose.stage
+For production use the docker-compose.prod
+
 ## Theme Development
 
 All theme development is done within the theme folder. When deployed the theme folder will be copied/moved/symlinked to public/wp-content/themes/boilerplate.

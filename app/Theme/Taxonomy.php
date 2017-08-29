@@ -12,7 +12,7 @@ class Taxonomy {
   public static function init() {
     $config = Taxonomy::config();
     foreach ($config as $k => $type) {
-      register_post_type($type['code'],$type['target'],$type['args']);
+      register_taxonomy($type['code'],$type['target'],$type['args']);
     }
   }
 
