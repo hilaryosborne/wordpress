@@ -6,7 +6,7 @@ LABEL maintainer "Hilary Osborne <h.t.osborne@gmail.com>"
 ENV TZ "Australia/Brisbane"
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
-COPY ./.docker/prod/apache/php/php.ini /usr/prod/etc/php/
+COPY ./.docker/prod/apache/php/php.ini /usr/etc/php/
 COPY ./.docker/prod/apache/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY ./.docker/prod/apache/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 COPY ./.docker/prod/apache/certs/ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem

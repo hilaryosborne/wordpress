@@ -1,9 +1,9 @@
 version: '2'
 services:
   wp.apache:
-    image: wpdockerprod/web
+    image: wp/web
     build:
-      context: .
+      context: ../../
       dockerfile: ./.docker/prod/apache/Dockerfile
     environment:
       - DB_NAME=

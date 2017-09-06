@@ -3,7 +3,7 @@ services:
   wp.apache:
     image: wpdockerlocal/web
     build:
-      context: .
+      context: ../../
       dockerfile: ./.docker/local/apache/Dockerfile
     environment:
       - DB_NAME=wordpress
@@ -19,13 +19,11 @@ services:
       - "443:443"
     volumes:
       - .:/var/www/html
-      - ./public:/var/www/html/public
       - ./.docker/local/apache/public/.htaccess:/var/www/html/public/.htaccess
       - ./.docker/local/apache/sites-available:/etc/apache2/sites-available
       - ./plugins:/var/www/html/public/wp-content/mu-plugins
       - ./theme:/var/www/html/public/wp-content/themes/boilerplate
       - ./storage/plugins:/var/www/html/public/wp-content/plugins
-      - ./storage/cache:/var/www/html/public/wp-content/cache
       - ./storage/uploads:/var/www/html/public/wp-content/uploads
       - ./bootstrap:/var/www/html/public/wp-content/mu-plugins/bootstrap
       - ./vendor:/var/www/html/public/wp-content/mu-plugins/bootstrap/vendor

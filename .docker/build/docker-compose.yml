@@ -1,23 +1,24 @@
 version: '2'
 services:
   wp.apache:
-    image: wpdockerstage/web
+    image: wp/web
     build:
-      context: .
-      dockerfile: ./.docker/stage/apache/Dockerfile
+      context: ../../
+      dockerfile: ./.docker/build/apache/Dockerfile
     environment:
       - DB_NAME=
       - DB_USER=
       - DB_PASSWORD=
       - DB_HOST=
       - WP_PREFIX=wp_
-      - WP_HOME=http://something.stage.example.com
+      - WP_HOME=http://example.com
       - WP_DEBUG=1
-      - WP_SITEURL=http://something.stage.example.com
+      - WP_SITEURL=http://example.com
     volumes:
       - ./storage/plugins:/var/www/html/public/wp-content/plugins
       - ./storage/cache:/var/www/html/public/wp-content/cache
       - ./storage/uploads:/var/www/html/public/wp-content/uploads
+      - ./built:/built
     ports:
       - "80"
       - "443"

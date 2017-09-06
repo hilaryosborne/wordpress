@@ -6,11 +6,11 @@ LABEL maintainer "Hilary Osborne <h.t.osborne@gmail.com>"
 ENV TZ "Australia/Brisbane"
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
-COPY ./.docker/stage/apache/php/php.ini /usr/stage/etc/php/
-COPY ./.docker/stage/apache/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY ./.docker/stage/apache/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-COPY ./.docker/stage/apache/certs/ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
-COPY ./.docker/stage/apache/certs/ssl-cert-snakeoil.key /etc/ssl/private/ssl-cert-snakeoil.key
+COPY ./.docker/build/apache/php/php.ini /usr/etc/php/
+COPY ./.docker/build/apache/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./.docker/build/apache/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY ./.docker/build/apache/certs/ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
+COPY ./.docker/build/apache/certs/ssl-cert-snakeoil.key /etc/ssl/private/ssl-cert-snakeoil.key
 
 RUN apt-get update && apt-get install -y \
     nano git zip \
@@ -57,7 +57,7 @@ RUN set -ex \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
   && rm yarn-v$YARN_VERSION.tar.gz
 
-ENV ACF_PRO_KEY <ACF_PRO_KEY>
+ENV ACF_PRO_KEY "b3JkZXJfaWQ9NDY1MjN8dHlwZT1wZXJzb25hbHxkYXRlPTIwMTQtMTItMTggMDA6NDU6MTg="
 
 # Setup app
 WORKDIR /var/www/html
@@ -93,7 +93,7 @@ RUN mv -f /var/www/html/bootstrap /var/www/html/public/wp-content/mu-plugins/boo
 
 COPY ./.env /var/www/html/public/.env
 COPY ./config.php /var/www/html/public/wp-config.php
-COPY ./.docker/stage/apache/public/.htaccess /var/www/html/public/.htaccess
+COPY ./.docker/build/apache/public/.htaccess /var/www/html/public/.htaccess
 
 RUN chgrp -R www-data /var/www/html \
   && chmod -R ug+rwx /var/www/html
@@ -101,3 +101,6 @@ RUN chgrp -R www-data /var/www/html \
 # Versioning
 ARG version=development
 ENV VERSION $version
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["zip -r /built/wordpress.zip /var/www/html/public"]
