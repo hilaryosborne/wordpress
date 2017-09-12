@@ -2,6 +2,14 @@
 
 namespace App\Cache;
 
-static class Manager {
+class Manager {
+
+  public function __construct() {
+
+  }
+
+  public function setDriver($driver) {
+    $this->driver = $driver;
+  }
 
 }
