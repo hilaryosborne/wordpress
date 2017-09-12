@@ -6,12 +6,15 @@ This project aims to provide a simple to deploy WordPress boilerplate with inbui
 
 ### Local development
 
-For local development use the docker-compose.local
+For local development update the docker-compose configuration file found within .docker/local (if needed) and then perform the following actions. Remember that local will spin up an internal apache and mysql server unique to your project. They will be mapped against port 80, 443 and 3306 on your computer. If you already have services listening on theses addresses you will encounter errors. Either close existing services or change the mapping within the docker compose configuration file.
 
-
-
-For staging use the docker-compose.stage
-For production use the docker-compose.prod
+1. Update ACF PRO KEY in the .env file
+2. Run composer install
+3. Run yarn install
+4. Run yarn build:dev
+5. Run sudo docker-compose -f .docker/local/docker-compose.yml build
+6. Run sudo docker-compose -f .docker/local/docker-compose.yml up
+7. Access and perform the setup at http://localhost
 
 ## Theme Development
 
