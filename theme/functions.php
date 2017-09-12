@@ -3,8 +3,6 @@
 use App\Theme\{Webpack,Size,Menu,Option,Taxonomy,Types};
 use App\Rest\Report\{Health,Version};
 use App\Session\{Flashbag};
-use App\Cache\{Cache};
-use App\Cache\Driver\{FlatFile};
 
 function boilerplate_setup() {
   // Hide the admin bar
@@ -13,8 +11,6 @@ function boilerplate_setup() {
 	Webpack::init();
 	// Session
 	Flashbag::startup();
-	// Caching
-	Cache::init(new FlatFile('cache'));
 	// Configuration
 	Size::init();
 	Menu::init();
