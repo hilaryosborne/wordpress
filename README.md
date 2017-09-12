@@ -1,6 +1,11 @@
-# WordPress Webpack + SCSS + BootStrap 4 + Composer + Docker
+# WordPress Boilerplate
+## ACF Pro + Webpack + SCSS + BootStrap 4 + Composer + Docker
 
-This project aims to provide a simple to deploy WordPress boilerplate with inbuilt composer and docker support.
+This project aims to provide a simple to use boilerplate for WordPress by bringing in multiple modern web technologies for client side, server side and hosting. This project approaches WordPress from a professional development perspective and is aimed at developers. It is not intended to be used by non developers or people new to WordPress. It is designed to create a philosphy for modern WordPress development using NodeJS, composer, docker and be continious integration ready.
+
+## Advanced Custom Fields Pro
+
+Please note that you will be required to have an ACF Pro key in order to use this boilerplate out of the box. If you do not intend to use ACF then you can remove the acf component from composer.json however this is highly advised against doing.
 
 ## Launching the docker environment
 
