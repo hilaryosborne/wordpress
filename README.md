@@ -7,9 +7,7 @@ This project aims to provide a simple to use boilerplate for WordPress by bringi
 
 Please note that you will be required to have an ACF Pro key in order to use this boilerplate out of the box. If you do not intend to use ACF then you can remove the acf component from composer.json however this is highly advised against doing.
 
-## Launching the docker environment
-
-### Local development
+## Local Development
 
 For local development update the docker-compose configuration file found within .docker/local (if needed) and then perform the following actions. Remember that local will spin up an internal apache and mysql server unique to your project. They will be mapped against port 80, 443 and 3306 on your computer. If you already have services listening on theses addresses you will encounter errors. Either close existing services or change the mapping within the docker compose configuration file.
 
@@ -23,7 +21,7 @@ For local development update the docker-compose configuration file found within 
 
 ## Theme Development
 
-All theme development is done within the theme folder. When deployed the theme folder will be copied/moved/symlinked to public/wp-content/themes/boilerplate.
+All theme development is done within the \theme folder. When deployed the theme folder will be moved or symlinked (depending on the deployment) to public/wp-content/themes/boilerplate. These settings can be changed within the docker-compose.yml files and the Dockerfile however it is recommended to leave as default.
 
 ## SCSS and JS development
 
