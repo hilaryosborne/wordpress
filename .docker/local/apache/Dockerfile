@@ -4,16 +4,17 @@
 
 FROM alpine as encrypt
 
+WORKDIR /certs
+
 ENV SSL_CERT "ssl-cert-snakeoil.pem"
 ENV SSL_KEY "ssl-cert-snakeoil.key"
-
-WORKDIR /certs
 
 COPY .docker/build/apache/bin/generate-certs.sh /usr/local/bin/generate-certs.sh
 
 RUN apk --update add bash openssl
 
-CMD /usr/local/bin/generate-certs.sh
+RUN chmod +x /usr/local/bin/generate-certs.sh \
+  && /usr/local/bin/generate-certs.sh
 
 ########################
 # APACHE/PHP SERVER BUILD

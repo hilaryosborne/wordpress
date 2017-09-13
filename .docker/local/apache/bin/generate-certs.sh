@@ -1,12 +1,5 @@
 #!/bin/bash
 
-if [[ -z $SILENT ]]; then
-echo "----------------------------"
-echo "| OMGWTFSSL Cert Generator |"
-echo "----------------------------"
-echo
-fi
-
 export CA_KEY=${CA_KEY-"ca-key.pem"}
 export CA_CERT=${CA_CERT-"ca.pem"}
 export CA_SUBJECT=${CA_SUBJECT:-"test-ca"}
@@ -23,19 +16,19 @@ export SSL_SUBJECT=${SSL_SUBJECT:-"example.com"}
 export SSL_DNS=${SSL_DNS}
 export SSL_IP=${SSL_IP}
 
-[[ -z $SILENT ]] && echo "--> Certificate Authority"
+echo "--> Certificate Authority"
 
 if [[ -e ./${CA_KEY} ]]; then
-    [[ -z $SILENT ]] && echo "====> Using existing CA Key ${CA_KEY}"
+    echo "====> Using existing CA Key ${CA_KEY}"
 else
-    [[ -z $SILENT ]] && echo "====> Generating new CA key ${CA_KEY}"
+    echo "====> Generating new CA key ${CA_KEY}"
     openssl genrsa -out ${CA_KEY} ${SSL_SIZE} > /dev/null
 fi
 
 if [[ -e ./${CA_CERT} ]]; then
-    [[ -z $SILENT ]] && echo "====> Using existing CA Certificate ${CA_CERT}"
+    echo "====> Using existing CA Certificate ${CA_CERT}"
 else
-    [[ -z $SILENT ]] && echo "====> Generating new CA Certificate ${CA_CERT}"
+    echo "====> Generating new CA Certificate ${CA_CERT}"
     openssl req -x509 -new -nodes -key ${CA_KEY} -days ${CA_EXPIRE} -out ${CA_CERT} -subj "/CN=${CA_SUBJECT}" > /dev/null  || exit 1
 fi
 
@@ -82,7 +75,6 @@ openssl req -new -key ${SSL_KEY} -out ${SSL_CSR} -subj "/CN=${SSL_SUBJECT}" -con
 openssl x509 -req -in ${SSL_CSR} -CA ${CA_CERT} -CAkey ${CA_KEY} -CAcreateserial -out ${SSL_CERT} \
     -days ${SSL_EXPIRE} -extensions v3_req -extfile ${SSL_CONFIG} > /dev/null || exit 1
 
-if [[ -z $SILENT ]]; then
 echo "====> Complete"
 echo "keys can be found in volume mapped to $(pwd)"
 echo
@@ -94,13 +86,12 @@ echo
 echo "ca_cert: |"
 cat $CA_CERT | sed 's/^/  /'
 echo
-echo "ssl_key: |"
+echo "ssl_key: ${SSL_KEY} |"
 cat $SSL_KEY | sed 's/^/  /'
 echo
-echo "ssl_csr: |"
+echo "ssl_csr: ${$SSL_CSR} |"
 cat $SSL_CSR | sed 's/^/  /'
 echo
-echo "ssl_cert: |"
+echo "ssl_cert: ${SSL_CERT} |"
 cat $SSL_CERT | sed 's/^/  /'
 echo
-fi
