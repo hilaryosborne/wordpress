@@ -26,8 +26,6 @@ WORKDIR /app
 
 COPY . /app
 
-ENV ACF_PRO_KEY <ACF PRO KEY>
-
 RUN composer install --prefer-dist -vvv --profile
 RUN composer dump-autoload --optimize --classmap-authoritative
 

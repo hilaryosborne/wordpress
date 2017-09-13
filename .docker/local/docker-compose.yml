@@ -14,6 +14,7 @@ services:
       - WP_HOME=http://localhost
       - WP_DEBUG=1
       - WP_SITEURL=http://localhost
+      - SENTRY_URL=
     ports:
       - "80:80"
       - "443:443"
