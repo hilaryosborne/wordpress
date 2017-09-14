@@ -9,7 +9,7 @@ WORKDIR /certs
 ENV SSL_CERT "ssl-cert-snakeoil.pem"
 ENV SSL_KEY "ssl-cert-snakeoil.key"
 
-COPY .docker/build/apache/bin/generate-certs.sh /usr/local/bin/generate-certs.sh
+COPY .docker/local/apache/bin/generate-certs.sh /usr/local/bin/generate-certs.sh
 
 RUN apk --update add bash openssl
 
