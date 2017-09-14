@@ -36,6 +36,7 @@ services:
       - WP_HOME=https://www.example.com
       - WP_DEBUG=1
       - WP_SITEURL=https://www.example.com
+      - SENTRY_URL=
     ports:
       - 80
       - 443

@@ -14,6 +14,7 @@ services:
       - WP_HOME=http://localhost
       - WP_DEBUG=1
       - WP_SITEURL=http://localhost
+      - SENTRY_URL=
     ports:
       - "80:80"
       - "443:443"
@@ -21,7 +22,7 @@ services:
       - ../../:/var/www/html
       - ./apache/public/.htaccess:/var/www/html/public/.htaccess
       - ./apache/sites-available:/etc/apache2/sites-available
-      - ./apache/sites-enabled:/etc/apache2/sites-enabled
+      - ./apache/sites-available:/etc/apache2/sites-enabled
       - ../../plugins:/var/www/html/public/wp-content/mu-plugins
       - ../../theme:/var/www/html/public/wp-content/themes/boilerplate
       - ../../storage/plugins:/var/www/html/public/wp-content/plugins

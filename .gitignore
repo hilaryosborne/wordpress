@@ -21,3 +21,6 @@ composer.lock
 !/storage/plugins/.gitkeep
 /storage/uploads/*
 !/storage/uploads/.gitkeep
+
+/yarn.lock
+/.idea

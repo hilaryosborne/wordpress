@@ -26,8 +26,6 @@ WORKDIR /app
 
 COPY . /app
 
-ENV ACF_PRO_KEY <ACF PRO KEY>
-
 RUN composer install --prefer-dist -vvv --profile
 RUN composer dump-autoload --optimize --classmap-authoritative
 
@@ -56,6 +54,7 @@ ENV TZ "Australia/Brisbane"
 RUN echo $TZ > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 COPY .docker/build/apache/php/php.ini /usr/etc/php/
+
 COPY .docker/build/apache/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN ln -sf /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 COPY .docker/build/apache/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
