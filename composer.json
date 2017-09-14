@@ -36,7 +36,8 @@
       "App\\" : "app/"
     },
      "files": [
-       "app/Session/helpers.php"
+       "app/Session/helpers.php",
+       "app/Theme/helpers.php"
      ]
   },
   "config": {
