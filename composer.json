@@ -36,8 +36,7 @@
       "App\\" : "app/"
     },
      "files": [
-       "app/Session/helpers.php",
-       "app/Cache/helpers.php"
+       "app/Session/helpers.php"
      ]
   },
   "config": {
