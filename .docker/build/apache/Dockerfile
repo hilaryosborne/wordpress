@@ -84,10 +84,13 @@ COPY --from=frontend /app/theme /var/www/html/theme
 
 RUN rm -rf /var/www/html/public/wp-content/plugins \
   && rm -rf /var/www/html/public/wp-content/cache \
-  && rm -rf /var/www/html/public/wp-content/uploads
+  && rm -rf /var/www/html/public/wp-content/uploads \
+  && rm -rf /var/www/html/logs
 
 RUN rm -rf /var/www/html/node_modules \
   && rm -rf ~/.npm
+
+RUN mkdir /var/www/html/logs
 
 RUN mv -f /var/www/html/plugins /var/www/html/public/wp-content/mu-plugins \
   && mv -f /var/www/html/theme/ /var/www/html/public/wp-content/themes/boilerplate
