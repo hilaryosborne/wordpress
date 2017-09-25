@@ -1,7 +1,7 @@
 version: '2'
 services:
   wp.apache:
-    image: wp/web
+    image: projectname.com:local
     build:
       context: ../../
       dockerfile: .docker/build/apache/Dockerfile
