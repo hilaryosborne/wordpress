@@ -1,10 +1,13 @@
 version: "3"
 
 services:
-  worker:
-    image: "www.example.com/example:latest"
+  production:
+    image: "www.example.com/example:master"
     deploy:
       replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
       labels:
         - "traefik.enable=true"
         - "traefik.port=80"

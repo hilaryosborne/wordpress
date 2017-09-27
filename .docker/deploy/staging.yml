@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  staging:
+    image: "www.example.com/example:staging"
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=80"
+        - "traefik.frontend.rule=Host: staging.example.com"
+        - "traefik.frontend.entrypoint=http,https"
+        - "traefik.frontend.passHostHeader=true"
+        - "traefik.backend.loadbalancer.sticky=true"
+        - "traefik.docker.network=traefik-net"
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      placement:
+        constraints: [node.role == worker]
+    environment:
+      - DB_NAME=
+      - DB_USER=
+      - DB_PASSWORD=
+      - DB_HOST=mysql.swarm
+      - WP_PREFIX=wp_
+      - WP_HOME=https://staging.example.com
+      - WP_DEBUG=1
+      - WP_SITEURL=https://staging.example.com
+      - SENTRY_URL=
+    ports:
+      - 80
+      - 443
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true

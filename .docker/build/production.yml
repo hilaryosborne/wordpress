@@ -1,0 +1,20 @@
+version: '2'
+services:
+  wp.apache:
+    image: projectname.com:master
+    build:
+      context: ../../
+      dockerfile: .docker/build/apache/Dockerfile
+    environment:
+      - DB_NAME=
+      - DB_USER=
+      - DB_PASSWORD=
+      - DB_HOST=
+      - WP_PREFIX=wp_
+      - WP_HOME=http://www.example.com
+      - WP_DEBUG=1
+      - WP_SITEURL=http://www.example.com
+      - SENTRY_URL=
+    ports:
+      - "80:80"
+      - "443:443"

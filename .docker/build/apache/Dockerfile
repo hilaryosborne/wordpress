@@ -26,6 +26,7 @@ WORKDIR /app
 
 COPY . /app
 
+RUN composer config --global repo.packagist composer https://packagist.org
 RUN composer install --prefer-dist -vvv --profile
 RUN composer dump-autoload --optimize --classmap-authoritative
 

@@ -12,8 +12,8 @@ For local development update the docker-compose configuration file found within 
 1. Run composer install
 2. Run yarn install
 3. Run yarn build:dev
-4. Run sudo docker-compose -f .docker/local/docker-compose.yml build
-5. Run sudo docker-compose -f .docker/local/docker-compose.yml up
+4. Run sudo docker-compose -f .docker/local/compose.yml build
+5. Run sudo docker-compose -f .docker/local/compose.yml up
 6. Access and perform the setup at http://localhost
 
 ### Development Services
@@ -41,5 +41,3 @@ To add plugins for local add them to storage/plugins
 ### File uploads
 
 To better work with AWS and Google persistent storage all uploads can be found within the /storage/uploads folder. This folder will be copied to /public/wp-content/uploads when deployed.
-
-## Build for deployment
