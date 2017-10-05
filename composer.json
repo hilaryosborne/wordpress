@@ -12,6 +12,7 @@
     }
   ],
   "type": "project",
+  "minimum-stability": "dev",
   "repositories":[
     {
       "type": "package",
@@ -38,16 +39,81 @@
           "reference": "master"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wpninjas/ninja-forms",
+        "type": "wordpress-plugin",
+        "version": "1.0.0",
+        "source": {
+          "url": "https://github.com/wpninjas/ninja-forms",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wpninjas/ninja-forms-layout-styles",
+        "type": "wordpress-plugin",
+        "version": "1.0.0",
+        "source": {
+          "url": "https://github.com/wpninjas/ninja-forms-layout-styles",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wpninjas/ninja-forms-multi-part",
+        "type": "wordpress-plugin",
+        "version": "1.0.0",
+        "source": {
+          "url": "https://github.com/wpninjas/ninja-forms-multi-part",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wpninjas/ninja-forms-uploads",
+        "type": "wordpress-plugin",
+        "version": "1.0.0",
+        "source": {
+          "url": "https://github.com/wpninjas/ninja-forms-uploads",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wpninjas/ninja-forms-conditional-logic",
+        "type": "wordpress-plugin",
+        "version": "1.0.0",
+        "source": {
+          "url": "https://github.com/wpninjas/ninja-forms-conditional-logic",
+          "type": "git",
+          "reference": "master"
+        }
+      }
     }
   ],
   "autoload": {
     "psr-4": {
       "App\\" : "app/"
     },
-     "files": [
-       "app/Session/helpers.php",
-       "app/Theme/helpers.php"
-     ]
+    "files": [
+      "app/Session/helpers.php",
+      "app/Theme/helpers.php"
+    ]
   },
   "config": {
     "preferred-install": "dist"
@@ -55,10 +121,16 @@
   "require": {
     "php": ">=5.6.4",
     "composer/installers": "~1.4.0",
+    "anahkiasen/underscore-php" : "dev-master",
     "johnpbloch/wordpress-core-installer": "~0.2",
     "johnpbloch/wordpress-core": "^4.1.1",
     "wp-premium/advanced-custom-fields-pro": "*",
     "deliciousbrains/better-search-replace" : "*",
+    "wpninjas/ninja-forms" : "*",
+    "wpninjas/ninja-forms-layout-styles" : "*",
+    "wpninjas/ninja-forms-multi-part" : "*",
+    "wpninjas/ninja-forms-uploads" : "*",
+    "wpninjas/ninja-forms-conditional-logic" : "*",
     "twig/twig": "^2.0",
     "vlucas/phpdotenv": "^2.4",
     "php-http/curl-client": "^1.7",
