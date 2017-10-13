@@ -1,11 +1,10 @@
 <?php get_header(); ?>
 
-  <?php get_template_part('partials/page','header'); ?>
+  <?php get_partial('partials/page','header'); ?>
 
-  <?php while (have_posts()) : the_post(); ?>
-    <?php get_template_part('partials/page','content'); ?>
-  <?php endwhile ?>
+  <h1>404</h1>
+  <h2>No Page Here</h2>
 
-  <?php get_template_part('partials/page','footer'); ?>
+  <?php get_partial('partials/page','footer'); ?>
 
 <?php get_footer(); ?>

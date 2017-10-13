@@ -1,7 +1,7 @@
 <?php
 
 function flashbag() {
-  return (new \App\Flashbag());
+  return (new \App\WordPress\Session\Flashbag());
 }
 
 function flashbag_set($path, $value) {

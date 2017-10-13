@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Session;
+namespace App\WordPress\Session;
 
 class Flashbag {
 
   public static function startup() {
-    add_action('init','App\Session\Flashbag::init');
-    add_action('wp_footer','App\Session\Flashbag::shutdown');
+    add_action('init','App\WordPress\Session\Flashbag::init');
+    add_action('wp_footer','App\WordPress\Session\Flashbag::shutdown');
   }
 
   public static function init() {

@@ -1,8 +1,8 @@
 <?php
 
-use App\Theme\{Webpack,Size,Menu,Option,Taxonomy,Types};
-use App\Rest\Report\{Health,Version};
-use App\Session\{Flashbag};
+use App\WordPress\Theme\{Webpack,Size,Menu,Option,Taxonomy,Types};
+use App\WordPress\Rest\Report\{Health,Version};
+use App\WordPress\Session\{Flashbag};
 
 function boilerplate_setup() {
   // Hide the admin bar

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Theme;
+namespace App\WordPress\Theme;
 
-class Taxonomy {
+class Types {
 
   public static function config() {
-    $pathname = get_template_directory() . '/config/taxonomy.json';
+    $pathname = get_template_directory() . '/config/types.json';
     return is_file($pathname) ? json_decode(file_get_contents($pathname), true) : [] ;
   }
 
   public static function init() {
-    $config = Taxonomy::config();
+    $config = Types::config();
     foreach ($config as $k => $type) {
-      register_taxonomy($type['code'],$type['target'],$type['args']);
+      register_post_type($type['code'],$type['args']);
     }
   }
 

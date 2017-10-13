@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Theme;
+namespace App\WordPress\Theme;
 
 class Webpack {
 

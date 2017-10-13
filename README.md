@@ -3,18 +3,19 @@
 
 This project aims to provide a simple to use boilerplate for WordPress by bringing in multiple modern web technologies for client side, server side and hosting. This project approaches WordPress from a professional development perspective and is aimed at developers. It is not intended to be used by non developers or people new to WordPress. It is designed to create a philosophy for modern WordPress development using NodeJS, composer, docker and be continuous integration ready.
 
-## Local Development
+## Quick Start Guide
 
 For local development update the docker-compose configuration file found within .docker/local (if needed) and then perform the following actions. Remember that local will spin up an internal apache and mysql server unique to your project. They will be mapped against port 80, 443 and 3306 on your computer. If you already have services listening on theses addresses you will encounter errors. Either close existing services or change the mapping within the docker compose configuration file.
 
 ### Start up on a local machine
 
 1. Run composer install
-2. Run yarn install
-3. Run yarn build:dev
+2. Run npm install
+3. Run npm run build:dev
 4. Run sudo docker-compose -f .docker/local/compose.yml build
 5. Run sudo docker-compose -f .docker/local/compose.yml up
 6. Access and perform the setup at http://localhost
+7. Activate the boilerplate theme
 
 ### Development Services
 
@@ -30,7 +31,7 @@ All theme development is done within the \theme folder. When deployed the theme 
 
 All JS and SCSS development is done within the src folder. When webpack is run a dist folder will be created within the theme folder. A webpack helper class will include the compiled JS and CSS assets within your theme.
 
-Be sure to run yarn install and then yarn build:dev when you first setting up your project
+Be sure to run npm install and then npm run build:dev when you first setting up your project
 
 ### Adding plugins
 
