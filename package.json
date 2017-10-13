@@ -32,9 +32,11 @@
     "rxjs": "^5.4.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "url-loader": "^0.5.9",
     "webfonts-loader": "^2.0.2",
-    "webpack": "^3.5.4"
+    "webpack": "^3.5.4",
+    "webpack-cleanup-plugin": "^0.5.1"
   },
   "scripts": {
     "build:dev": "webpack -w --env=dev --progress --profile --colors --display-error-details",

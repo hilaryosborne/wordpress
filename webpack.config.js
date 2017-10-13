@@ -1,4 +1,6 @@
 const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const AssetsPlugin = require('assets-webpack-plugin');
 const webpack = require('webpack');
@@ -15,6 +17,10 @@ const assets = new AssetsPlugin({
   path: path.resolve(`theme/dist/`),
   fullPath: false
 });
+
+const cleanup = new WebpackCleanupPlugin();
+
+const uglify = new UglifyJSPlugin({});
 
 module.exports = {
   entry: './src/index',
@@ -62,5 +68,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [extractSass, assets ]
+  plugins: [extractSass, cleanup, assets, uglify ]
 }
