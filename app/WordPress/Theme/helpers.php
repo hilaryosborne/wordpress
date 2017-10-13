@@ -1,6 +1,6 @@
 <?php
 
-use App\Theme\Partial;
+use App\WordPress\Theme\Partial;
 
 function get_partial($context, $fileOrParams=false, $params=[]) {
 
