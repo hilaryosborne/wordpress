@@ -18,7 +18,9 @@ const assets = new AssetsPlugin({
   fullPath: false
 });
 
-const cleanup = new WebpackCleanupPlugin();
+const cleanup = new WebpackCleanupPlugin({
+    exclude:  ['manifest.json']
+});
 
 const uglify = new UglifyJSPlugin({});
 
