@@ -2,7 +2,7 @@ version: "3"
 
 services:
   staging:
-    image: "www.example.com/example:staging"
+    image: projectname.com:staging
     deploy:
       replicas: 1
       update_config:

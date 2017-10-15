@@ -2,7 +2,7 @@ version: "3"
 
 services:
   production:
-    image: "www.example.com/example:master"
+    image: projectname.com:master
     deploy:
       replicas: 1
       update_config:
@@ -46,7 +46,7 @@ services:
     networks:
       - traefik-net
   staging:
-    image: "www.example.com/example:staging"
+    image: projectname.com:staging
     deploy:
       replicas: 1
       update_config:
