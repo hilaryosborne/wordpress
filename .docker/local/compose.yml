@@ -30,7 +30,7 @@ services:
       - ../../bootstrap:/var/www/html/public/wp-content/mu-plugins/bootstrap
       - ../../vendor:/var/www/html/public/wp-content/mu-plugins/bootstrap/vendor
       - ../../app:/var/www/html/public/wp-content/mu-plugins/bootstrap/app
-      - ../../config.php:/var/www/html/public/wp-config.php
+      - ../../config.php:/var/www/html/wp-config.php
       - ../../.env:/var/www/html/public/.env
   wp.mysql:
     image: mysql
