@@ -101,7 +101,7 @@ RUN mv -f /var/www/html/bootstrap /var/www/html/public/wp-content/mu-plugins \
   && mv -f /var/www/html/app /var/www/html/public/wp-content/mu-plugins/bootstrap
 
 COPY ./.env /var/www/html/public/.env
-COPY ./config.php /var/www/html/public/wp-config.php
+COPY ./wp-config.php /var/www/html/public/wp-config.php
 COPY .docker/build/apache/public/.htaccess /var/www/html/public/.htaccess
 
 RUN a2enmod rewrite \
