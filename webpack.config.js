@@ -18,8 +18,13 @@ const assets = new AssetsPlugin({
   fullPath: false
 });
 
+const jquery = new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery"
+});
+
 const cleanup = new WebpackCleanupPlugin({
-    exclude:  ['manifest.json']
+    exclude:  ['manifest.json','fonts/**/*']
 });
 
 const uglify = new UglifyJSPlugin({});
@@ -70,5 +75,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [extractSass, cleanup, assets, uglify ]
+  plugins: [extractSass, jquery, cleanup, assets, uglify ]
 }
