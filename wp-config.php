@@ -13,6 +13,14 @@ foreach ($env as $k => $value) {
 	putenv("$k=$value");
 }
 
+/** Mailer Setup */
+define('MAIL_SMTP', getenv('MAIL_SMTP'));
+define('MAIL_HOST', getenv('MAIL_HOST'));
+define('MAIL_PORT', getenv('MAIL_PORT'));
+define('MAIL_AUTH', getenv('MAIL_AUTH'));
+define('MAIL_USERNAME', getenv('MAIL_USERNAME'));
+define('MAIL_PASSWORD', getenv('MAIL_PASSWORD'));
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', getenv('DB_NAME'));
