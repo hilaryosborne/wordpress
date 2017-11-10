@@ -14,6 +14,8 @@ services:
       - WP_HOME=http://localhost
       - WP_DEBUG=1
       - WP_SITEURL=http://localhost
+      - MAIL_HOST=wp.email
+      - MAIL_PORT=10025
       - SENTRY_URL=
     ports:
       - "80:80"
@@ -32,6 +34,13 @@ services:
       - ../../app:/var/www/html/public/wp-content/mu-plugins/bootstrap/app
       - ../../wp-config.php:/var/www/html/wp-config.php
       - ../../.env:/var/www/html/public/.env
+  wp.email:
+    image: modularitycontainers/postfix
+    environment:
+      - MYHOSTNAME=localhost
+    volumes:
+      - ./mailer/postfix:/var/spool/postfix
+      - ./mailer/mail:/var/spool/mail
   wp.mysql:
     image: mysql
     environment:
