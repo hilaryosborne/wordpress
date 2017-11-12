@@ -1,31 +1,11 @@
 <?php
 
-use App\WordPress\Theme\Webpack;
-use App\WordPress\Theme\Size;
-use App\WordPress\Theme\Menu;
-use App\WordPress\Theme\Option;
-use App\WordPress\Theme\Taxonomy;
-use App\WordPress\Theme\Types;
-use App\WordPress\Rest\Report\Health;
-use App\WordPress\Rest\Report\Version;
-use App\WordPress\Session\Flashbag;
 
 function boilerplate_setup() {
     // Hide the admin bar
 	show_admin_bar(false);
-	// Load the JSON configurations
-	Webpack::init();
-	// Session
-	Flashbag::startup();
-	// Configuration
-	Size::init();
-	Menu::init();
-	Option::init();
-	Taxonomy::init();
-	Types::init();
-	// Rest Endpoints
-	Health::init();
-	Version::init();
+	// Initialise the provider util classes
+	\Utils\Provider::init();
 }
 
 add_action('init', 'boilerplate_setup');

@@ -65,8 +65,9 @@
     "php-http/curl-client": "^1.7",
     "guzzlehttp/psr7": "^1.4",
     "sentry/sentry": "^1.7",
-    "sackrin/acf-fusion": "^0.1.5",
-    "sackrin/acf-fusion-models": "^0.0.2"
+    "sackrin/acf-fusion": "^0.2.2",
+    "sackrin/acf-fusion-models": "^0.0.8",
+    "sackrin/wordpress-utils": "^0.0.2"
   },
   "require-dev": {
     "phpunit/phpunit": "5.3.*"
