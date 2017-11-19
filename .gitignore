@@ -1,4 +1,6 @@
 /.docker/local/mysql/data
+/.docker/local/email/mail
+/.docker/local/email/postfix
 /vendor
 /public/*
 !/public/.gitkeep
