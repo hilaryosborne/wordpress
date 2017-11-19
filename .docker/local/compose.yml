@@ -39,13 +39,8 @@ services:
     environment:
       - MYHOSTNAME=localhost
     volumes:
-<<<<<<< HEAD
       - ./email/postfix:/var/spool/postfix
       - ./email/mail:/var/spool/mail
-=======
-      - ./mail/postfix:/var/spool/postfix
-      - ./mail/mail:/var/spool/mail
->>>>>>> master
   wp.mysql:
     image: mysql
     environment:
