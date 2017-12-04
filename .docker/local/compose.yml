@@ -5,18 +5,8 @@ services:
     build:
       context: ../../
       dockerfile: .docker/local/apache/Dockerfile
-    environment:
-      - DB_NAME=wordpress
-      - DB_USER=wordpress
-      - DB_PASSWORD=secret
-      - DB_HOST=wp.mysql
-      - WP_PREFIX=wp_
-      - WP_HOME=http://localhost
-      - WP_DEBUG=1
-      - WP_SITEURL=http://localhost
-      - MAIL_HOST=wp.email
-      - MAIL_PORT=10025
-      - SENTRY_URL=
+    env_file:
+      - ./local.env
     ports:
       - "80:80"
       - "443:443"
@@ -32,8 +22,8 @@ services:
       - ../../bootstrap:/var/www/html/public/wp-content/mu-plugins/bootstrap
       - ../../vendor:/var/www/html/public/wp-content/mu-plugins/bootstrap/vendor
       - ../../app:/var/www/html/public/wp-content/mu-plugins/bootstrap/app
+      - ../../packages:/var/www/html/public/wp-content/mu-plugins/bootstrap/packages
       - ../../wp-config.php:/var/www/html/wp-config.php
-      - ../../.env:/var/www/html/public/.env
   wp.email:
     image: modularitycontainers/postfix
     environment:
@@ -52,3 +42,13 @@ services:
       - ./mysql/data:/var/lib/mysql
     ports:
       - "3306:3306"
+  app.storage:
+    image: minio/minio
+    environment:
+       MINIO_ACCESS_KEY: 58XG458BLCZIQ72UZYKY
+       MINIO_SECRET_KEY: nMrbLbRA6aGsDhA0gb40kRCe6n4uaoPzXGzxfFRa
+    command: server /export
+    volumes:
+      - ./storage/data:/export
+    ports:
+      - "9000:9000"
