@@ -21,7 +21,8 @@ For local development update the docker-compose configuration file found within 
 
 1. HTTP will be accessible via http://localhost
 2. HTTPS will be accessible via https://localhost
-3. MySQL will be accessible via 127.0.0.1 on port
+3. MySQL will be accessible via 127.0.0.1 on port 3306
+4. S3 Dashboard will be accessible via https://localhost:9000
 
 ### Theme Development
 
