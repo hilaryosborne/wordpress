@@ -6,12 +6,44 @@
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 /*----------------------------------------------------*/
 
-$env = parse_ini_file(__DIR__.'/.env', TRUE);
-
-foreach ($env as $k => $value) {
-	if (getenv($k)) { continue; }
-	putenv("$k=$value");
+// .ENV FILE SUPPORT
+// Advisable NOT to use .env files. Consider using system environment vars instead
+// If the env file is currently within the public directory
+if (file_exists(__DIR__.'/.env')) {
+    // Throw and exception because this is really bad
+    // Uncomment if you need for testing
+    // ONLY DO THIS IF THE PROJECT IS NOT PUBLIC
+    // $env = parse_ini_file(__DIR__ . '/.env', TRUE);
+    throw new \Exception('Environment variable is public!! Please move');
+} // If there is an environment variable in a safe-ish place
+elseif (file_exists(__DIR__.'/../.env')) {
+    // Open and parse the environment var
+    $env = parse_ini_file(__DIR__ . '/../.env', TRUE);
 }
+// If an environment file was parsed
+if (isset($env) && is_array($env)) {
+    // Loop through each of the env variables
+    foreach ($env as $k => $value) {
+        // If the environment variable is already present
+        // Skip it! This is so we don't override anything set within the OS
+        if (getenv($k)) { continue; }
+        // Add the environment variable to the environment
+        putenv("$k=$value");
+    }
+}
+
+/** Core WP URL settings */
+define('WP_HOME', getenv('WP_HOME'));
+define('WP_SITEURL', getenv('WP_SITEURL'));
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', getenv('DB_NAME'));
+define('DB_USER', getenv('DB_USER'));
+define('DB_PASSWORD', getenv('DB_PASSWORD'));
+define('DB_HOST', getenv('DB_HOST'));
+define('DB_CHARSET', 'utf8mb4');
+define('DB_COLLATE', '');
 
 /** Mailer Setup */
 define('MAIL_SMTP', getenv('MAIL_SMTP'));
@@ -20,29 +52,6 @@ define('MAIL_PORT', getenv('MAIL_PORT'));
 define('MAIL_AUTH', getenv('MAIL_AUTH'));
 define('MAIL_USERNAME', getenv('MAIL_USERNAME'));
 define('MAIL_PASSWORD', getenv('MAIL_PASSWORD'));
-
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', getenv('DB_NAME'));
-
-/** MySQL database username */
-define('DB_USER', getenv('DB_USER'));
-
-/** MySQL database password */
-define('DB_PASSWORD', getenv('DB_PASSWORD'));
-
-/** MySQL hostname */
-define('DB_HOST', getenv('DB_HOST'));
-
-define('WP_HOME', getenv('WP_HOME'));
-
-define('WP_SITEURL', getenv('WP_SITEURL'));
-
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8mb4');
-
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
 
 /**#@+
  * Authentication Unique Keys and Salts.
