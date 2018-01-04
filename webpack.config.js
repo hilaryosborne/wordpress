@@ -20,7 +20,10 @@ const assets = new AssetsPlugin({
 
 const jquery = new webpack.ProvidePlugin({
     $: "jquery",
-    jQuery: "jquery"
+    jQuery: "jquery",
+    jquery: "jquery",
+    'window.jQuery': 'jquery',
+    Popper: ['popper.js', 'default']
 });
 
 const cleanup = new WebpackCleanupPlugin({
@@ -38,15 +41,18 @@ module.exports = {
     publicPath: `/wp-content/themes/${theme}/dist/`,
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.json']
   },
   module: {
     loaders: [
-      { test: /\.json$/, loaders: ['json-loader'] },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+          test: /\.json$/,
+          loader: 'json-loader'
+      },
+      {
+          test: /\.js[x]?$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
       },
       {
         test: /\.scss|.css$/,
