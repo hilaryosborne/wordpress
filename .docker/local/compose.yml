@@ -38,6 +38,7 @@ services:
       - MYSQL_PASSWORD=secret
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_DATABASE=wordpress
+      - MYSQL_ROOT_HOST=0.0.0.0
     volumes:
       - ./mysql/data:/var/lib/mysql
     ports:
