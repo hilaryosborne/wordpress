@@ -1,5 +1,5 @@
-import $ from 'jquery';
+import $ from 'jquery'
 
-$(document).ready(()=>{
-  console.log('Hello');
-});
+$(document).ready(() => {
+  console.log('Welcome to Boilerplate')
+})
