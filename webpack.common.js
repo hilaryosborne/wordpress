@@ -38,7 +38,11 @@ module.exports = {
     publicPath: `/wp-content/themes/${theme}/dist/`
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      images: path.resolve('src/images/'),
+      scripts: path.resolve('src/scripts/')
+    }
   },
   module: {
     loaders: [
@@ -75,11 +79,11 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|gif|png|svg)(\?.*$|$)/,
         exclude: [/node_modules/, /src\/fonts/],
-        loader: 'url-loader?limit=1024&name=images/[name].[ext]'
+        loader: 'url-loader?limit=1024&name=images/[path][name].[ext]'
       },
       {
         test: /\.(svg|woff|woff2|ttf|eot|otf)(\?.*$|$)/,
-        exclude: [/src\/images/],
+        exclude: [/src\/images/, /images/],
         loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
       }
     ]
