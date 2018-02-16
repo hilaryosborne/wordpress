@@ -1,6 +1,8 @@
 # WordPress Boilerplate
 ## ACF Pro + Webpack + SCSS + BootStrap 4 + Composer + Docker
 
+### This project has been moved to https://github.com/sackrin/fusion-wp and is no longer maintained
+
 This project aims to provide a simple to use boilerplate for WordPress by bringing in multiple modern web technologies for client side, server side and hosting. This project approaches WordPress from a professional development perspective and is aimed at developers. It is not intended to be used by non developers or people new to WordPress. It is designed to create a philosophy for modern WordPress development using NodeJS, composer, docker and be continuous integration ready.
 
 ## Quick Start Guide
